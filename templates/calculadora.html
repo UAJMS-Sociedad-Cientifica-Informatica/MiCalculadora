@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Mi Calculadora</h1>
+    <table>
+        <thead>
+            <td colspan="4">
+                <input id="texto" type="text" disabled value="">
+            </td>
+        </thead>
+        <tr>
+            <td>
+                <button onclick="boton('1')">1</button>
+            </td>
+            <td>
+                <button onclick="boton('2')">2</button>
+            </td>
+            <td>
+                <button onclick="boton('3')">3</button>
+            </td>
+            <td>
+                <button onclick="boton('/')">/</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="boton('4')">4</button>
+            </td>
+            <td>
+                <button onclick="boton('5')">5</button>
+            </td>
+            <td>
+                <button onclick="boton('6')">6</button>
+            </td>
+            <td>
+                <button onclick="boton('*')">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="boton('7')">7</button>
+            </td>
+            <td>
+                <button onclick="boton('8')">8</button>
+            </td>
+            <td>
+                <button onclick="boton('9')">9</button>
+            </td>
+            <td>
+                <button onclick="boton('+')">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="boton('0')">0</button>
+            </td>
+            <td>
+                <button onclick="boton(',')">,</button>
+            </td>
+            <td>
+                <button onclick="borrar()">B</button>
+            </td>
+            <td>
+                <button onclick="boton('-')">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1"></td>
+            <td>
+                <button onclick="limpiar()">C</button>
+            </td>
+            <td>
+                <button onclick="igual()">=</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function boton(dato) {
+            texto = document.getElementById("texto").value;
+            document.getElementById("texto").value = texto + dato;
+        }
+        function borrar() {
+            texto = document.getElementById("texto").value;
+            texto = texto.substring(0, texto.length-1);
+            document.getElementById("texto").value = texto;
+        }
+        function limpiar() {
+            document.getElementById("texto").value = "";
+        }
+        function igual() {
+            request = new XMLHttpRequest();
+            calcular = document.getElementById("texto").value;
+            calcular = calcular.replace("/","d");
+            request.open("GET", "calcular/"+calcular, true);
+            request.onreadystatechange = function () {
+                if(this.readyState === 4 && this.status === 200){
+                    json = JSON.parse(this.responseText);
+                    document.getElementById("texto").value = json.resultado;
+                }
+            };
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("holamundo");
+        }
+    </script>
+</body>
+</html>
