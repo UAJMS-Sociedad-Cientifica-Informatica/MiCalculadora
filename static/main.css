@@ -1,0 +1,35 @@
+body{
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    background: dodgerblue;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 80pt;
+    color: white;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    background: lightslategray;
+    box-shadow: 3px 3px 8px 0px white;
+}
+
+button{
+    font-weight: bold;
+    padding: 15pt;
+    width: 100%;
+    font-size: 20pt;
+}
+
+input{
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15pt;
+    width: 88%;
+    font-size: 20pt;
+}
