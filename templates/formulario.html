@@ -1,0 +1,28 @@
+{#{% extends 'calculadora.html' %}#}
+{#{% block css %}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block titulo %}#}
+{#    {{ titulo }}#}
+{#{% endblock %}#}
+{##}
+{#{% block cuerpo %}#}
+{#    {{ formulario }}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block js %}#}
+{##}
+{#{% endblock %}#}
+
+{{ formulario }}
+{{ estudiante }}
+
+{% for cal in calculados %}
+    <ul>
+        <li>{{ cal.funcion }}</li>
+        <li>{{ cal.resultado }}</li>
+        <li>{{ cal.fecha_de_creacion }}</li>
+    </ul>
+{% endfor %}

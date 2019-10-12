@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <title>Calculadora</title>
     <link rel="stylesheet" href="{% static "main.css" %}">
+    {% block css %}
+
+    {% endblock %}
 </head>
 <body>
-    <h1>Mi Calculadora</h1>
+    <h1>
+        {% block titulo %}
+            {{ titulo }}
+        {% endblock %}
+    </h1>
     <table>
         <thead>
             <td colspan="4">
@@ -80,7 +87,29 @@
             </td>
         </tr>
     </table>
-    {{ dato }}
+    <a href="{% url 'formulario' %}">ir al formulario</a>
+{#    {% for i in lista %}#}
+{#        <p>{{ i }}</p>#}
+{#    {% endfor %}#}
+{##}
+{#    {% if si %}#}
+{#        <p>#}
+{#            verdad#}
+{#        </p>#}
+{#    {% else %}#}
+{#        <p>#}
+{#            falsoo#}
+{#        </p>#}
+{#    {% endif %}#}
+
+    {% block cuerpo %}
+    
+    {% endblock %}
+
+
     <script src="{% static "main.js" %}" ></script>
+    {% block js %}
+
+    {% endblock %}
 </body>
 </html>

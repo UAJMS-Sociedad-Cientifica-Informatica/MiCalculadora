@@ -17,10 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from Calculadora.views import calculadora, calcular
+from Calculadora.views import calculadora, calcular, mi_formulario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', calculadora),
+    path('', calculadora, name='inicio'),
+    path('formulario_calculadora', mi_formulario, name="formulario"),
     path('calcular/<str:texto>/', calcular),
 ]
